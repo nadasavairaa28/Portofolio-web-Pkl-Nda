@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="princess-blossom">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#1c0518">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Nada Savaira</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Canvas Confetti for Royal Celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sparkle Canvas (Magic Wand Pink Sparkle Cursor) -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Floating Pink Ambient Lights -->
+    <div class="royal-ambient-lights">
+        <div class="light-orb orb-1"></div>
+        <div class="light-orb orb-2"></div>
+        <div class="light-orb orb-3"></div>
+        <div class="light-orb orb-4"></div>
+    </div>
+
+    <!-- ===================================================================
+         TOP ROYAL HUD & NAVIGATION BAR
+         =================================================================== -->
+    <header class="royal-header" id="royalHeader">
+        <div class="header-inner">
+            <!-- Brand Crest -->
+            <a href="#throne-room" class="royal-brand">
+                <div class="crest-icon-box">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Naduyy</span>
+                    <span class="brand-subtitle">🌸 duyduyduy 🌸</span>
+                </div>
+            </a>
+
+            <!-- Realm Menu Navigation -->
+            <nav class="royal-nav" id="royalNav">
+                <ul class="nav-realm-list">
+                    <li>
+                        <a href="#throne-room" class="realm-link active" data-chamber="Pink Throne Room">
+                            <span class="realm-icon">🏰</span>
+                            <span class="realm-name">Aboutme</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#graces-masteries" class="realm-link" data-chamber="Pink Magic Lab">
+                            <span class="realm-icon">🪄</span>
+                            <span class="realm-name">Sertifikat</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#grand-ballroom" class="realm-link" data-chamber="Rose Ballroom">
+                            <span class="realm-icon">💖</span>
+                            <span class="realm-name">Project</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#hall-of-honors" class="realm-link" data-chamber="Tiara Honors">
+                            <span class="realm-icon">👑</span>
+                            <span class="realm-name">Experience</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pigeon-tower" class="realm-link cta-link" data-chamber="Rose Post Tower">
+                            <span class="realm-icon">💌</span>
+                            <span class="realm-name">Kirim Surat</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Royal Utilities -->
+            <div class="royal-utilities">
+                <!-- Theme Palette Selector -->
+                <div class="theme-palette-dropdown">
+                    <button class="util-btn" id="themeBtn" title="Ganti Variasi Gaun Pink">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+                    <div class="theme-menu" id="themeMenu">
+                        <div class="theme-menu-title">🎀 Gaun Pink Kerajaan 🎀</div>
+                        <button class="theme-option active" data-theme-set="princess-blossom">
+                            <span class="color-dot blossom"></span> Blossom Pink (Default)
+                        </button>
+                        <button class="theme-option" data-theme-set="princess-cotton">
+                            <span class="color-dot cotton"></span> Pastel Cotton Pink
+                        </button>
+                        <button class="theme-option" data-theme-set="princess-magenta">
+                            <span class="color-dot magenta"></span> Royal Velvet Magenta
+                        </button>
+                        <button class="theme-option" data-theme-set="princess-rosegold">
+                            <span class="color-dot rosegold"></span> Pink & Rose Gold
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sound Button -->
+                <button class="util-btn" id="chimeBtn" title="Dengarkan Lonceng Putri">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
+
+                <!-- Mobile Hamburger -->
+                <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Buka Menu Istana">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Minimap Float Bar (Responsive HUD) -->
+    <div class="realm-minimap" id="realmMinimap">
+        <div class="minimap-track">
+            <div class="minimap-progress" id="minimapProgress"></div>
+        </div>
+        <div class="current-chamber-label">
+            <i class="fa-solid fa-heart"></i>
+            <span id="activeChamberName">The Pink Throne Room</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- ===================================================================
+             CHAMBER 1: THE PINK THRONE ROOM (HERO SECTION)
+             =================================================================== -->
+        <section class="chamber-section throne-section" id="throne-room" data-title="The Pink Throne Room">
+            <div class="chamber-backdrop-crest">🌸</div>
+
+            <div class="throne-grid">
+                <div class="throne-content">
+                    <div class="imperial-banner">
+                        <i class="fa-solid fa-crown banner-crown"></i>
+                        <span>🌸 SOFTWARE ENGGINEERING STUDENT  🌸</span>
+                    </div>
+
+                    <h2 class="court-salutation">Tentang DiriKu</h2>
+                    <h1 class="regal-title">
+                             <br>
+                        <span class="shimmer-text"> Nada Savaira Rizqin</span>
+                    </h1>
+                    <p class="regal-rank">
+                        <span class="rank-badge">🌸 Frontend - Backend</span>
+                        <span class="rank-badge">💖 UI/UX</span>
+                    </p>
+
+                    <p class="regal-bio">
+                  Halo! Saya Nada Savaira Rizqin, seorang siswi dari SMK Plus Pelita Nusantara. Saya hobi menyusun baris kode (HTML, CSS, Python, PHP) menjadi antarmuka web yang cantik, rapi, dan mudah digunakan. Saat ini, saya siap membawa ide-ide kreatif dan semangat belajar saya untuk berkontribusi secara profesional di program Praktik Kerja Lapangan (PKL).                    </p>
+
+                    <div class="throne-action-group">
+                        <a href="#grand-ballroom" class="royal-btn btn-pink">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Project Showcase</span>
+                        </a>
+                    </div>
+
+                    <div class="kingdom-stats-deck">
+                        <div class="stat-deck-card">
+                            <div class="stat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-digit">Html</span>
+                                <span class="stat-label">Css</span>
+                            </div>
+                        </div>
+                        <div class="stat-deck-card">
+                            <div class="stat-icon"><i class="fa-solid fa-heart"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-digit">Python</span>
+                                <span class="stat-label">Php</span>
+                            </div>
+                        </div>
+                        <div class="stat-deck-card">
+                            <div class="stat-icon"><i class="fa-solid fa-gem"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-digit">Laravel</span>
+                                <span class="stat-label">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="throne-visual">
+                    <div class="mirror-enclosure" id="mirrorParallax">
+                        <div class="floating-tiara">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+
+                        <div class="mirror-glass-frame">
+                            <div class="mirror-gold-rim">
+                                 <img src="images/aku.png" alt="Foto Profil"  style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block;">
+                                <div class="enchanted-reflection-glare"></div>
+                            </div>
+                        </div>
+
+                        
+        </section>
+
+        <!-- ===================================================================
+             CHAMBER 2: PINK MAGIC LAB & MASTERIES (KEAHLIAN)
+             =================================================================== -->
+        <section class="chamber-section masteries-section" id="graces-masteries" data-title="Pink Magic Laboratory">
+            <div class="section-crest-header">
+                <span class="crest-tag"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                <h2 class="crest-title">Sertifikat</h2>
+                <div class="crest-divider">
+                    <span class="divider-line"></span>
+                    <i class="fa-solid fa-crown"></i>
+                    <span class="divider-line"></span>
+                </div>
+            </div>
+
+           <div class="masteries-grid">
+    <h2 class="section-title">Sertifikat</h2>
+    <div class="certificate-grid">
+        
+        <!-- Sertifikat 1: PKL / Web Developer -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif1.png" alt="Sertifikat  STT Terpadu Nurul Fikri">
+            </div>
+            <div class="cert-content">
+                <h3>Sertifikat  STT Terpadu Nurul Fikri</h3>
+                <div class="cert-actions">
+                      <a href="pdf/sertif1.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 2: Webinar STT Terpadu Nurul Fikri -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif2.png" alt="Sertifikat  Codelamp ">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar  Codelamp</h3>
+                <div class="cert-actions">
+                   <a href="pdf/sertif2.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 3: Webinar Codelamp 1 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif3.png" alt="Sertifikat Codelamp">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar Codelamp</h3>
+                <div class="cert-actions">
+                    <a href="pdf/sertif3.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 4: Webinar ID-Network -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif4.png" alt="Sertifikat ID-Network">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar ID-Network</h3>
+                <div class="cert-actions">
+                    <a href="pdf/sertif4.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 5: Webinar Codelamp 2 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif5.png" alt="Sertifikat Codelamp1">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar Codelamp</h3>
+                <div class="cert-actions">
+                   <a href="pdf/sertif5.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 6: Webinar Codelamp 3 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif6.png" alt="Sertifikat Codelamp">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar Codelamp</h3>
+                <div class="cert-actions">
+                     <a href="pdf/sertif6.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 7: Certificate Minecraft -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif7.png" alt="Certificate Minecraft">
+            </div>
+            <div class="cert-content">
+                <h3>Certificate Minecraft Education</h3>
+                <div class="cert-actions">
+                     <a href="pdf/sertif7.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 8: Webinar Codepolitan -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif8.png" alt="Sertifikat Codepolitan">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar & Pelatihan Codepolitan</h3>
+                <div class="cert-actions">
+                     <a href="pdf/sertif8.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 9: Webinar Galeria Potensi -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="images/sertif9.png" alt="Sertifikat Galeria Potensi">
+            </div>
+            <div class="cert-content">
+                <h3>Webinar Galeria Potensi</h3>
+                <div class="cert-actions">
+                     <a href="pdf/sertif9.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sertifikat 10: Pelatihan / Sertifikat Ke-10 -->
+        <div class="cert-card">
+            <div class="cert-img-wrapper">
+                <img src="SERTIFIKAT/IMAGES/sertifikat10.png" alt="Sertifikat Tambahan">
+            </div>
+            <div class="cert-content">
+                <h3>Sertifikat Kompetensi Pemrograman Dasar</h3>
+                <div class="cert-actions">
+                    <a href="SERTIFIKAT/PDF/sertifikat10.pdf" target="_blank" class="cert-btn">📜 Lihat PDF</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        </section>
+
+        <!-- ===================================================================
+             CHAMBER 3: ROSE BALLROOM (MAHAKARYA & PROYEK)
+             =================================================================== -->
+        <section class="chamber-section ballroom-section" id="grand-ballroom" data-title="The Rose Ballroom">
+            <div class="section-crest-header">
+                <span class="crest-tag"><i class="fa-solid fa-gem"></i> </span>
+                <h2 class="crest-title">Project</h2>
+                <div class="crest-divider">
+                    <span class="divider-line"></span>
+                    <i class="fa-solid fa-crown"></i>
+                    <span class="divider-line"></span>
+                </div>
+            </div>
+
+            <div class="ballroom-filter-ribbon">
+                <button class="ribbon-btn active" data-filter="all"><span>Seluruh Project</span></button>
+                <button class="ribbon-btn" data-filter="boutique"><span>Eccomerce</span></button>
+                <button class="ribbon-btn" data-filter="regal-ui"><span>Jam Digital</span></button>
+                <button class="ribbon-btn" data-filter="academy"><span>Eccomerce</span></button>
+            </div>
+
+            <div class="ballroom-gallery-grid">
+                <!-- Project 1 -->
+                <div class="foil-project-card" data-category="boutique" data-tilt>
+                    <div class="foil-glare"></div>
+                    <div class="card-crest-badge">💖 Crown Jewel</div>
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=700&q=80" alt="Crystal Palace Jewelry" loading="lazy">
+                        <div class="card-hover-portal">
+                            <button class="inspect-btn" onclick="openRoyalShowcase('Pink Diamond Sanctuary', 'Situs butik perhiasan permata merah muda kerajaan dengan sistem katalog interaktif, visualisasi kilau 3D, dan checkout bertingkat dengan animasi segel.', ['HTML5', 'SASS/CSS3', 'Vanilla JS', 'GSAP Animation'], 'https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=700&q=80', 'https://example.com')">
+                                <i class="fa-solid fa-eye"></i> Masuk Ruang Pamer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <span class="card-sub">E-Commerce Permata Bangsawan</span>
+                        <h3 class="card-name">Pink Diamond Sanctuary</h3>
+                        <p class="card-desc">Katalog butik perhiasan istana dengan kurasi berlian langka & pengalaman belanja mewah kelas dunia.</p>
+                        <div class="card-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="foil-project-card" data-category="regal-ui" data-tilt>
+                    <div class="foil-glare"></div>
+                    <div class="card-crest-badge">🌸 Princess Ball</div>
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=80" alt="Grand Imperial Ball Portal" loading="lazy">
+                        <div class="card-hover-portal">
+                            <button class="inspect-btn" onclick="openRoyalShowcase('Grand Pink Princess Ball Portal', 'Sistem portal undangan pesta dansa agung kerajaan dengan fitur surat segel lilin digital, pemilihan kursi VIP bangsawan, dan kartu undangan berbasis animasi WebGL.', ['Figma', 'UI/UX Design', 'CSS Grid', 'JavaScript'], 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=80', 'https://example.com')">
+                                <i class="fa-solid fa-eye"></i> Masuk Ruang Pamer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <span class="card-sub">Sistem Undangan Pesta Dansa</span>
+                        <h3 class="card-name">Jam Digital</h3>
+                        <p class="card-desc">Sistem undangan pesta dansa kerajaan dengan surat segel pink interaktif dan RSVP real-time.</p>
+                        <div class="card-tags">
+                            <span>Figma</span>
+                            <span>UI/UX</span>
+                            <span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="foil-project-card" data-category="boutique" data-tilt>
+                    <div class="foil-glare"></div>
+                    <div class="card-crest-badge">🎀 Rose Scent</div>
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80" alt="Rose Petal Perfume Sanctuary" loading="lazy">
+                        <div class="card-hover-portal">
+                            <button class="inspect-btn" onclick="openRoyalShowcase('Rose Petal Perfume Sanctuary', 'Toko daring wewangian mawar istana dengan konfigurator botol kristal emas dan peracik piramida aroma kustom berbasis AI.', ['React', 'CSS Modules', 'Web Audio API', 'Stripe API'], 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80', 'https://example.com')">
+                                <i class="fa-solid fa-eye"></i> Masuk Ruang Pamer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <span class="card-sub">Wewangian Mawar Eksklusif</span>
+                        <h3 class="card-name">Rose Petal Perfumery</h3>
+                        <p class="card-desc">Toko daring parfum mawar istana dengan modul racikan aroma interaktif dan botol berornamen pita.</p>
+                        <div class="card-tags">
+                            <span>React</span>
+                            <span>Modern CSS</span>
+                            <span>Web API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="foil-project-card" data-category="academy" data-tilt>
+                    <div class="foil-glare"></div>
+                    <div class="card-crest-badge">🌹 Château Rose</div>
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80" alt="Château Rose Academy" loading="lazy">
+                        <div class="card-hover-portal">
+                            <button class="inspect-btn" onclick="openRoyalShowcase('Château Rose Princess Academy', 'Platform edukasi etiket, tata krama, dan seni diplomatik kerajaan dengan modul kuliah video interaktif dan sertifikat digital bertanda tangan emas.', ['JavaScript', 'Canvas API', 'HTML5', 'CSS3'], 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80', 'https://example.com')">
+                                <i class="fa-solid fa-eye"></i> Masuk Ruang Pamer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <span class="card-sub">Akademi Tata Krama Putri</span>
+                        <h3 class="card-name">Château Rose Academy</h3>
+                        <p class="card-desc">Portal edukasi etiket putri kerajaan dengan sertifikasi digital berstempel lilin otomatis.</p>
+                        <div class="card-tags">
+                            <span>JavaScript</span>
+                            <span>Canvas API</span>
+                            <span>HTML5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             CHAMBER 4: TIARA HONORS (GELAR & PENGHARGAAN)
+             =================================================================== -->
+        <section class="chamber-section honors-section" id="hall-of-honors" data-title="Tiara Honors">
+            <div class="section-crest-header">
+                <span class="crest-tag"><i class="fa-solid fa-award"></i></span>
+                <h2 class="crest-title">My Experience</h2>
+                <div class="crest-divider">
+                    <span class="divider-line"></span>
+                    <i class="fa-solid fa-crown"></i>
+                    <span class="divider-line"></span>
+                </div>
+            </div>
+
+            <div class="royal-timeline">
+                <div class="timeline-spine"></div>
+
+                <div class="timeline-pod left">
+                    <div class="timeline-badge-seal"><i class="fa-solid fa-crown"></i></div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-year">2025 - Now</span>
+                        <h3 class="timeline-title">Devacto It</h3>
+                        <span class="timeline-giver">International Digital Nobility Society</span>
+                        <p class="timeline-text">Dianugerahi penghargaan utama atas karya dengan keanggunan tata letak visual pink-rose dan performa komputasi terbaik.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-pod right">
+                    <div class="timeline-badge-seal"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-year">Desember 2025</span>
+                        <h3 class="timeline-title">GDG Seminar UI</h3>
+                        <span class="timeline-giver">Global Code Alchemists Guild</span>
+                        <p class="timeline-text">Pengakuan kehormatan tertinggi atas penguasaan teknik animasi modern dan arsitektur kode bebas cela.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-pod left">
+                    <div class="timeline-badge-seal"><i class="fa-solid fa-heart"></i></div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-year">2025 - Now</span>
+                        <h3 class="timeline-title">PMR/UKS</h3>
+                        <span class="timeline-giver">Palace UX Design Fellowship</span>
+                        <p class="timeline-text">Penghargaan atas inovasi membangun desain sistem mewah yang ramah dan memikat bagi semua kalangan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================
+             CHAMBER 5: ROSE POST TOWER (AUDIENSI & KONTAK)
+             =================================================================== -->
+        <section id="audiensi" class="chamber-section">
+    <div class="section-crest-header">
+        <span class="crest-tag"><i class="fas fa-crown"></i> </span>
+        <h2 class="crest-title">Kirim Kesan/Pesan</h2>
+        <div class="crest-divider">
+            <span class="divider-line"></span>
+            <i class="fas fa-envelope-open-text"></i>
+            <span class="divider-line"></span>
+        </div>
+        <p class="crest-subtext">
+        
+        </p>
+    </div>
+
+    <!-- KOTAK UTAMA FORM PESAN KERAJAAN -->
+    <div class="scroll-form-container">
+        <form class="decree-form">
+            <!-- Header Kartu di Dalam Kotak -->
+            <div class="form-card-header">
+                <i class="fas fa-feather-alt"></i>
+                <span>PESAN</span>
+            </div>
+
+            <!-- Input 1: Nama -->
+            <div class="royal-input-wrapper">
+                <label for="nama"><i class="fas fa-user"></i> Nama</label>
+                <input type="text" id="nama" class="royal-input" placeholder="Contoh: Lady Eleanor / Lord...">
+            </div>
+
+            <!-- Input 2: Email -->
+            <div class="royal-input-wrapper">
+                <label for="email"><i class="fas fa-dove"></i> Alamat Email</label>
+                <input type="email" id="email" class="royal-input" placeholder="your.name@kingdom.com">
+            </div>
+
+            <!-- Input 3: Select (Perihal) -->
+            <div class="royal-input-wrapper">
+                <label for="perihal"><i class="fas fa-scroll"></i> Perihal Audiensi</label>
+                <select id="perihal" class="royal-select">
+                    <option value="" disabled selected>-- Pilih Perihal Audiensi --</option>
+                    <option value="web">Pembangunan Situs Web </option>
+                    <option value="kerjasama">Kerja Sama Project </option>
+                    <option value="lainnya">Pertanyaan Lainnya</option>
+                </select>
+            </div>
+
+            <!-- Input 4: Textarea (Pesan) -->
+            <div class="royal-input-wrapper">
+                <label for="pesan"><i class="fas fa-pen-quill"></i> Isi Pesan Disini!!</label>
+                <textarea id="pesan" class="royal-textarea" placeholder="Tuliskan kebutuhan Anda dengan penuh rasa hormat..."></textarea>
+            </div>
+
+            <!-- Tombol Kirim -->
+            <button type="submit" class="send-decree-btn">
+                <i class="fas fa-stamp"></i> Kirim
+            </button>
+        </form>
+    </div>
+    </section>
+    </main>
+
+
+
+        <div class="footer-social-medallions">
+              <a href="https://github.com" target="_blank" class="social-btn">💻 GitHub</a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn Court"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://dribbble.com" target="_blank" title="Dribbble Gallery"><i class="fa-brands fa-dribbble"></i></a>
+              <a href="https://www.instagram.com/_sava1raa?igsh=MW9nN2FzbWI5amV1aQ==" target="_blank" class="social-btn">📸 Instagram</a>
+        </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
