@@ -621,3 +621,4 @@ function showRoyalToast(heading, message) {
         toast.classList.remove('show');
     }, 4500);
 }
+
